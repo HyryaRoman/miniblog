@@ -11,7 +11,7 @@ app.set('view engine', 'html')
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(require('./routers/pages.js'))
 app.use(require('./routers/api.js'))
-
+console.log(`Preparing to listen post ${port}`)
 if (!module.parent) {
     app.listen(port, () => {
         console.log(`Listening on port ${port}`)
