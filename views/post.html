@@ -1,0 +1,13 @@
+<%- include('header.html') -%>
+<article class="article">
+    <form action="/api/post" target="_self" method="post" autocomplete="off">
+        <header class="header-edit">
+            <label for="post_name"><h3>Заголовок посту:</h3></label>
+            <input type="text" id="post_name" name="post_name">
+        </header>
+        <label for="post_text"><h3>Текс посту:</h3></label>
+        <textarea id="post_text" name="post_text" rows=50></textarea>
+        <input class="button" type="submit" value="Опублікувати">
+    </form>
+</article>
+<%- include('footer.html') -%>

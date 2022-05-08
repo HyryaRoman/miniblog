@@ -1,0 +1,14 @@
+<%- include('header.html') -%>
+<article class="article">
+    <header class="header">
+        <h2><%= post_title %></h2>
+    </header>
+    <section class="post"> 
+        <p id="ptext"></p>
+        <script>
+            const post_text = '<%= post_text %>';
+            document.getElementById('ptext').innerHTML = DOMPurify.sanitize(marked.parse(post_text));
+        </script>
+    </section>
+</article>
+<%- include('footer.html') -%>
