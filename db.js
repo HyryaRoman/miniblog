@@ -66,7 +66,7 @@ const createPoolAndEnsureSchema = async () => {
     });
 };
 
-let pool;
+let pool = createPoolAndEnsureSchema();
 
 module.exports.getPool = async () => {
     pool = pool || (await createPoolAndEnsureSchema());
