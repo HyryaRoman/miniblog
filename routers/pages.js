@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
             posts: posts
         });
     }  catch (err) {
-        res.status(500).send('Error: can\`t connect to database').end();
+        res.status(500).send(err).end();
     }
 });
 
@@ -31,7 +31,7 @@ router.get("/view/:post_id", async (req, res, next) => {
             post_text: post["post_text"]
         });
     } catch (err) {
-        res.status(500).send('Error: can\`t connect to database').end();
+        res.status(500).send(err).end();
     }
 });
 

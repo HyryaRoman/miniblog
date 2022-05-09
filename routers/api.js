@@ -36,7 +36,7 @@ router.post("/api/post", async (req, res, next) => {
         const pid = await postCreationQuery;
         res.redirect(`/view/${pid}`);
     } catch (err) {
-        res.status(500).send('Unable to create post. Hope you have saved it somewhere.').end();
+        res.status(500).send(err).end();
     }
 });
 
