@@ -69,5 +69,6 @@ const createPoolAndEnsureSchema = async () => {
 let pool;
 
 module.exports.getPool = async () => {
-    return pool || (await createPoolAndEnsureSchema());
+    pool = pool || (await createPoolAndEnsureSchema());
+    return pool;
 }
