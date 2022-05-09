@@ -43,13 +43,13 @@ const createPool = async () => {
 
 const ensureSchema = async pool => {
     await pool.query(
-        `CREATE TABLE IF NOT EXISTS posts (
+        `CREATE TABLE IF NOT EXISTS posts(
         post_id int NOT NULL,
         post_time timestamp DEFAULT CURRENT_TIMESTAMP,
         post_title tinytext NOT NULL,
         post_desc tinytext NOT NULL,
         post_text text NOT NULL,
-        PRIMARY KEY (post_id)`);
+        PRIMARY KEY (post_id);`);
 };
 
 const createPoolAndEnsureSchema = async () => {
