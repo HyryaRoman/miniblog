@@ -1,7 +1,7 @@
 const express = require('express');
 const bp = require('body-parser');
 const router = express.Router();
-const db = require('./db.js')
+const db = require('../db')
 
 let pool;
 
