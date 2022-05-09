@@ -29,16 +29,20 @@ router.post("/api/post", async (req, res, next) => {
     const ptext = data.post_text;
     try {
         pool = await db.getPool();
-        const postCreationQuery = pool.query(
+        pool.query(
             `INSERT INTO posts (post_title, post_desc, post_text)
             OUTPUT Inserted.post_id
-            VALUES (${pname}, ${pdesc}, ${ptext});`);
-
-        const pid = await postCreationQuery;
-        res.redirect(`/view/${pid}`);
+            VALUES (${pname}, ${pdesc}, ${ptext});`, (err, res, fields) => {
+                if(err) {
+                    console.log(err);
+                    res.status(500).send("Error while inserting post into database!").end();
+                }
+                const pid = res["pid"];
+                res.redirect(`/view/:${pid}`);
+            });
     } catch (err) {
         console.log(err);
-        res.status(500).send(err).end();
+        res.status(500).send("Error while inserting post into database!").end();
     }
 });
 
