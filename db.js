@@ -49,7 +49,9 @@ const ensureSchema = async pool => {
         post_title tinytext NOT NULL,
         post_desc tinytext NOT NULL,
         post_text text NOT NULL,
-        PRIMARY KEY (post_id));`);
+        PRIMARY KEY (post_id));`).catch((err) => {
+            console.log(err);
+        });
 };
 
 const createPoolAndEnsureSchema = async () => {
@@ -59,6 +61,7 @@ const createPoolAndEnsureSchema = async () => {
             return pool;
         }
     ).catch(err => {
+        console.log(err);
         throw err;
     });
 };

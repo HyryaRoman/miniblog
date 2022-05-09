@@ -14,8 +14,9 @@ router.get("/", async (req, res, next) => {
             title: "Переглянути",
             posts: posts
         });
-    }  catch (err) {
-        res.status(500).send(err).end();
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error").end();
     }
 });
 
@@ -31,7 +32,8 @@ router.get("/view/:post_id", async (req, res, next) => {
             post_text: post["post_text"]
         });
     } catch (err) {
-        res.status(500).send(err).end();
+        console.log(err);
+        res.status(500).send("Error").end();
     }
 });
 

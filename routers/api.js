@@ -13,6 +13,7 @@ router.use(async (req, res, next) => {
         pool = await db.getPool();
         next();
     } catch (err) {
+        console.log(err);
         return next(err);
     }
 });
@@ -36,6 +37,7 @@ router.post("/api/post", async (req, res, next) => {
         const pid = await postCreationQuery;
         res.redirect(`/view/${pid}`);
     } catch (err) {
+        console.log(err);
         res.status(500).send(err).end();
     }
 });
