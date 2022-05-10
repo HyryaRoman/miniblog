@@ -12,6 +12,7 @@ router.post("/api/post", async (req, res, next) => {
     const pname = db.connection.escape(data.post_name);
     const pdesc = db.connection.escape(data.post_text.substring(0, 200));
     const ptext = db.connection.escape(data.post_text);
+    console.log("Description: " + pdesc);
     db.query(
         `INSERT INTO posts (post_title, post_desc, post_text)
         VALUES (${pname}, ${pdesc}, ${ptext});`,
