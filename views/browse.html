@@ -5,7 +5,7 @@
             <h2><%= post.post_title %></h2>
             <p id="ptext_<%= post.post_id %>"></p>
             <script>
-                document.getElementById('ptext_<%= post.post_id %>').innerHTML = DOMPurify.sanitize(marked.parse(`<%= post.post_desc %>`));
+                document.getElementById('ptext_<%= post.post_id %>').innerHTML = DOMPurify.sanitize(marked.parse(`<%= post.post_desc %>`) + "...");
             </script>
         </a>
     <% }) %>
