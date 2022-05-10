@@ -14,8 +14,8 @@ router.post("/api/post", async (req, res, next) => {
     const ptext = db.connection.escape(data.post_text);
     db.query(
         `INSERT INTO posts (post_title, post_desc, post_text)
-        OUTPUT Inserted.post_id
-        VALUES (${pname}, ${pdesc}, ${ptext});`,
+        VALUES (${pname}, ${pdesc}, ${ptext});
+        SELECT LAST_INSERT_ID();`,
         (qerr, qres, qfields) => {
             if(qerr) {
                 res.status(500).send("Error while inserting post into database!").end();
