@@ -22,7 +22,10 @@ router.get("/", async (req, res, next) => {
 
 router.get("/view/:post_id", async (req, res, next) => {
     db.query(
-        `SELECT post_title, post_text FROM posts WHERE post_id=${req.params["post_id"]};`,
+        `SELECT post_title, post_text FROM posts WHERE post_id= :p_id;`,
+        {
+            p_id: req.params["post_id"]
+        },
         (qerr, qres, qfields) => {
             if(qerr) {
                 console.log(qerr);

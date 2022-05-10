@@ -20,8 +20,8 @@ var connection = mysql.createConnection({
     queueLimit: 0, // Default: 0
 });
 
-const query = (q, on_complete) => {
-    connection.query(q, (err, res, fields) => {
+const query = (q, data = {}, on_complete) => {
+    connection.query(q, data, (err, res, fields) => {
         if (err) {
             console.log('Failed to connect to db');
             console.log(err.stack);
