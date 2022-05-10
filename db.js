@@ -32,7 +32,7 @@ const query = (q, on_complete) => {
 
 const ensureSchema = () => {
     query(`CREATE TABLE IF NOT EXISTS posts(
-        post_id int NOT NULL AUTO INCREMENT,
+        post_id int NOT NULL AUTO_INCREMENT,
         post_time timestamp DEFAULT CURRENT_TIMESTAMP,
         post_title tinytext NOT NULL,
         post_desc tinytext NOT NULL,
