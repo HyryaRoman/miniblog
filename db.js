@@ -23,7 +23,7 @@ var connection = mysql.createConnection({
 const query = (q, on_complete) => {
     connection.query(q, (err, res, fields) => {
         if (err) {
-            console.log('Failed to connect to db');
+            console.log('Error in query:');
             console.log(err.stack);
         }
         on_complete(err, res, fields);
@@ -32,7 +32,7 @@ const query = (q, on_complete) => {
 
 const ensureSchema = () => {
     query(`CREATE TABLE IF NOT EXISTS posts(
-        post_id int NOT NULL,
+        post_id int NOT NULL AUTO INCREMENT,
         post_time timestamp DEFAULT CURRENT_TIMESTAMP,
         post_title tinytext NOT NULL,
         post_desc tinytext NOT NULL,
