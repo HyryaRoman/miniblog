@@ -5,15 +5,16 @@ const db = require('../db');
 router.get("/", async (req, res, next) => {
     db.query(
         `SELECT post_id, post_title, post_desc FROM posts ORDER BY post_time DESC;`,
-        (err, res, fields) => {
-            if(err) {
-                console.log(err);
+        (qerr, qres, qfields) => {
+            if(qerr) {
+                console.log(qerr);
                 res.status(500).send("Error while quering recent posts!").end();
                 return;
             }
+            console.log(qres);
             res.render('browse', {
                 title: "Переглянути",
-                posts: posts
+                posts: qres
             });
         }
     );
@@ -22,16 +23,17 @@ router.get("/", async (req, res, next) => {
 router.get("/view/:post_id", async (req, res, next) => {
     db.query(
         `SELECT post_title, post_text FROM posts WHERE post_id=${req.params["post_id"]};`,
-        (err, res, fields) => {
-            if(err) {
-                console.log(err);
+        (qerr, qres, qfields) => {
+            if(qerr) {
+                console.log(qerr);
                 res.status(500).send("Error while quering post!").end();
                 return;
             }
+            console.log(qres);
             res.render('view', {
-                title: res["post_title"],
-                post_title: res["post_title"],
-                post_text: res["post_text"]
+                title: qres["post_title"],
+                post_title: qres["post_title"],
+                post_text: qres["post_text"]
             });
         }
     );
