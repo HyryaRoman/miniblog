@@ -32,9 +32,9 @@ router.get("/view/:post_id", async (req, res, next) => {
             }
             console.log(qres);
             res.render('view', {
-                title: qres["post_title"],
-                post_title: qres["post_title"],
-                post_text: qres["post_text"]
+                title: qres[0].post_title,
+                post_title: qres[0].post_title,
+                post_text: qres[0].post_text
             });
         }
     );
