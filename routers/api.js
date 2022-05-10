@@ -14,15 +14,14 @@ router.post("/api/post", async (req, res, next) => {
     const ptext = db.connection.escape(data.post_text);
     db.query(
         `INSERT INTO posts (post_title, post_desc, post_text)
-        VALUES (${pname}, ${pdesc}, ${ptext});
-        SELECT LAST_INSERT_ID();`,
+        VALUES (${pname}, ${pdesc}, ${ptext});`,
         (qerr, qres, qfields) => {
             if(qerr) {
                 res.status(500).send("Error while inserting post into database!").end();
                 return;
             }
             console.log(qres);
-            const pid = qres["pid"];
+            const pid = qres.insertId;
             res.redirect(`/view/:${pid}`);
         }
     );

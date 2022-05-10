@@ -3,10 +3,10 @@
     <% posts.forEach((post) => { %>
         <a class="card" href="/view/<%= post.post_id %>">
             <h2><%= post.title %></h2>
-            <p id="ptext"></p>
+            <p id="ptext_<%= post.post_id %>"></p>
             <script>
-                const post_text = '<%= post.post_desc %>';
-                document.getElementById('ptext').innerHTML = DOMPurify.sanitize(marked.parse(post_text));
+                const post_text = `<%= post.post_desc %>`;
+                document.getElementById('ptext_<%= post.post_id %>').innerHTML = DOMPurify.sanitize(marked.parse(post_text));
             </script>
         </a>
     <% }) %>
