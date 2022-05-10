@@ -9,18 +9,13 @@ router.use(bp.urlencoded({ extended: true }));
 router.post("/api/post", async (req, res, next) => {
     // res.redirect("/view/001");
     const data = req.body;
-    const pname = data.post_name;
-    const pdesc = data.post_text.substring(0, 255);
-    const ptext = data.post_text;
+    const pname = db.connection.escape(data.post_name);
+    const pdesc = db.connection.escape(data.post_text.substring(0, 255));
+    const ptext = db.connection.escape(data.post_text);
     db.query(
         `INSERT INTO posts (post_title, post_desc, post_text)
         OUTPUT Inserted.post_id
-        VALUES (:pn, :pd, :pt);`,
-        {
-            pn: pname,
-            pd: pdesc,
-            pt: ptext
-        },
+        VALUES (${pname}, ${pdesc}, ${ptext});`,
         (qerr, qres, qfields) => {
             if(qerr) {
                 res.status(500).send("Error while inserting post into database!").end();
