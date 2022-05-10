@@ -28,8 +28,6 @@ const query = (q, on_complete) => {
         }
         on_complete(err, res, fields);
     });
-
-    connection.end();
 };
 
 const ensureSchema = () => {
