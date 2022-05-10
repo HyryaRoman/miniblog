@@ -22,7 +22,7 @@ router.post("/api/post", async (req, res, next) => {
             }
             console.log(qres);
             const pid = qres.insertId;
-            res.redirect(`/view/:${pid}`);
+            res.redirect(`/view/${pid}`);
         }
     );
 });
