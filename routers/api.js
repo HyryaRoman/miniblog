@@ -10,7 +10,7 @@ router.post("/api/post", async (req, res, next) => {
     // res.redirect("/view/001");
     const data = req.body;
     const pname = db.connection.escape(data.post_name);
-    const pdesc = db.connection.escape(data.post_text.substring(0, 200));
+    const pdesc = db.connection.escape(data.post_desc.substring(0, 200));
     const ptext = db.connection.escape(data.post_text);
     console.log("Description: " + pdesc);
     db.query(

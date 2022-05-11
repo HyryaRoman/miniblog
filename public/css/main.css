@@ -95,7 +95,7 @@ body {
     gap: 10px;
 }
 
-.article #post_text, .article #post_name {
+.article .field {
     resize: none;
     width: auto;
     margin: 0;
@@ -104,7 +104,7 @@ body {
     border-radius: 10px;
 }
 
-.article #post_text:focus, .article #post_name:focus {
+.article .field:focus {
     border-color: var(--primary);
 }
 

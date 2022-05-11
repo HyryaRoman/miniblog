@@ -3,10 +3,14 @@
     <form action="/api/post" target="_self" method="post" autocomplete="off">
         <header class="header-edit">
             <label for="post_name"><h3>Заголовок посту:</h3></label>
-            <input type="text" id="post_name" name="post_name">
+            <input type="text" class="field" id="post_name" name="post_name" maxlength=200>
         </header>
+        <label for="post_desc"><h3>Опис посту</h3></label>
+        <textarea class="field" id="post_desc" name="post_desc" rows=5 maxlength=200 oninput="desc_length.value = post_desc.value.length"></textarea>
+        <label><output name="desc_length" for="post_desc">0</output>/200</label>
         <label for="post_text"><h3>Текс посту:</h3></label>
-        <textarea id="post_text" name="post_text" rows=50></textarea>
+        <textarea class="field" id="post_text" name="post_text" rows=50 maxlength=65000 oninput="text_length.value = post_text.value.length"></textarea>
+        <label><output name="text_length" for="post_text">0</output>/65000</label>
         <input class="button" type="submit" value="Опублікувати">
     </form>
 </article>

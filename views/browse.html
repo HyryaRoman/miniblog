@@ -3,10 +3,7 @@
     <% posts.forEach((post) => { %>
         <a class="card" href="/view/<%= post.post_id %>">
             <h2><%= post.post_title %></h2>
-            <p id="ptext_<%= post.post_id %>"></p>
-            <script>
-                document.getElementById('ptext_<%= post.post_id %>').innerHTML = DOMPurify.sanitize(marked.parse(`<%= post.post_desc %>`) + "...");
-            </script>
+            <p><%= post.post.desc %></p>
         </a>
     <% }) %>
 </section>
