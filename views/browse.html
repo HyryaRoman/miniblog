@@ -3,7 +3,7 @@
     <% posts.forEach((post) => { %>
         <a class="card" href="/view/<%= post.post_id %>">
             <h2><%= post.post_title %></h2>
-            <p><%= post.post.desc %></p>
+            <p><%= post.post_desc %></p>
         </a>
     <% }) %>
 </section>
