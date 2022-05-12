@@ -260,7 +260,10 @@ a {
     gap: 50px;
     bottom: 0;
     position: ABSOLUTE;
+    width: 100%;
+    width: -moz-available;
     width: -webkit-fill-available;
+    width: fill-available;
 }
 
 @media screen and (max-width: 650px) {
