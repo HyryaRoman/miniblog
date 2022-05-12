@@ -1,12 +1,32 @@
 :root {
-    --background: white;
-    --background2: #3e3a48;
-    --background3: #eee;
-    --primary: #80ffdb;
+    --body: #3C6681;
+    --link: #ff0000;
+
+    --header: #a4cfea;
+    --header-text: #131313;
+
+    --footer: #2a4251;
+    --footer-text: #ffffff;
+
+    --post: #BFD2DE;
+    --post-text: #232323;
+
+    --button: #F0F5F2;
+    --button-sel: #82e8b5;
+    --button-text: #353535;
+
+    --button-imp: #f6670d;
+    --button-imp-sel: #fa995c;
+    --button-imp-text: #ffffff;
+
+    --textarea: #F0F5F2;
+    --textarea-text: #2f2f2f;
+    --textarea-border: #c6c6c6;
+    --textarea-border-sel: #ff6200;
 }
 
 body {
-    background: var(--background);
+    background: var(--body);
     margin: 0;
     padding: 0;
     display: flex;
@@ -16,22 +36,42 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 800;
+}
+
 .page-header {
-    background: var(--background2);
+    background: var(--header);
+    color: var(--header-text);
+
     margin: 0;
     padding: 5px 0;
+
     display: inline-flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: stretch;
 }
 
-.page-header h1 {
+.page-header a {
+    text-decoration: none;
+}
+
+.page-header a h1 {
     margin: 0;
     padding: 5px 15px;
+
+    color: var(--header-text);
+
     font-size: 2.0em;
     font-weight: lighter;
-    color: white;
+}
+
+.page-header a img {
+    margin: 10px 15px;
+    height: 75px;
 }
 
 .page-header .nav-panel {
@@ -53,29 +93,50 @@ body {
 
 .page-header .nav-panel a {
     margin: 0;
-    padding: 5px 15px;
-    background: var(--background);
+    padding: 10px 20px;
+
+    background: var(--button);
+    color: var(--button-text);
+
     border-radius: 25px;
     text-decoration: none;
-    color: black;
+    font-size: 1.25em;
     transition-duration: 0.25s;
 }
 
 .page-header .nav-panel a:hover {
-    background: var(--primary);
+    background: var(--button-sel);
 }
 
 .article {
     margin: 20px auto;
     padding: 0 15px;
-    background: var(--background3);
+
+    background: var(--post);
+    color: var(--post-text);
+
     width: 80%;
     border-radius: 10px;
+
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: stretch;
-    gap: 10px;
+    gap: 25px;
+}
+
+.article section {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 5px;
+}
+
+.article section h3 {
+    margin: 0;
+    padding: 0;
 }
 
 @media screen and (max-width: 650px) {
@@ -87,46 +148,58 @@ body {
 
 .article form {
     margin: 0;
-    padding: 10px 0;
+    padding: 20px 0;
+
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
     align-items: stretch;
-    gap: 10px;
+    gap: 25px;
 }
 
 .article .field {
-    resize: none;
-    width: auto;
     margin: 0;
     padding: 5px;
-    border: 4px inset #e8e8e8;
+
+    background: var(--textarea);
+    color: var(--textarea-text);
+
+    resize: none;
+    width: auto;
+
+    border: 4px inset var(--textarea-border);
     border-radius: 10px;
 }
 
 .article .field:focus {
-    border-color: var(--primary);
+    border-color: var(--textarea-border-sel);
+    outline: none;
 }
 
 .article .button {
     margin: 0;
-    padding: 5px 15px;
-    background: var(--background);
+    padding: 10px 20px;
+
+    background: var(--button);
+    color: var(--button-text);
+
     border-radius: 25px;
     border: none;
+
     text-decoration: none;
-    color: black;
+    font-size: 1.5em;
     transition-duration: 0.25s;
 }
 
 .article .button:hover {
-    background: var(--primary);
+    background: var(--button-sel);
 }
 
 
 .card-container {
     margin: 0;
     padding: 20px;
+
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
@@ -137,14 +210,16 @@ body {
 .card-container .card {
     margin: 0;
     padding: 0 15px;
-    background: var(--background3);
+
+    background: var(--post);
+    color: var(--post-text);
+
     width: 250px;
     height: 300px;
     flex: 1 2 auto;
     border-radius: 25px;
     transition-duration: 0.5s;
     text-decoration: none;
-    color: black;
 }
 
 .card-container .card:hover {
@@ -160,4 +235,41 @@ body {
     .card-container .card {
         width: auto;
     }
+}
+
+.button-imp {
+    background: var(--button-imp) !important;
+    color: var(--button-imp-text) !important;
+    font-weight: 700 !important;
+}
+
+.button-imp:hover {
+    background: var(--button-imp-sel) !important;
+}
+
+.page-footer {
+    margin: 0;
+    padding: 5px 15px;
+    margin-top: auto;
+
+    background: var(--footer);
+    color: var(--footer-text);
+
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 50px;
+}
+
+@media screen and (max-width: 650px) {
+    .page-footer {
+        flex-flow: column nowrap;
+        align-items: stretch;
+    }
+}
+
+.page-footer p {
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.2em;
 }

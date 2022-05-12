@@ -13,7 +13,8 @@ router.get("/", async (req, res, next) => {
             }
             console.log(qres);
             res.render('browse', {
-                title: "Переглянути",
+                title: "Блогик - сайт для мініблогів",
+                page_desc: "Блогик - свйт для мініблогів. Жодної реєстрації, повна анонімність.",
                 posts: qres
             });
         }
@@ -23,7 +24,7 @@ router.get("/", async (req, res, next) => {
 router.get("/view/:post_id", async (req, res, next) => {
     const pid = db.connection.escape(parseInt(req.params["post_id"]));
     db.query(
-        `SELECT post_title, post_text FROM posts WHERE post_id= ${pid}`,
+        `SELECT post_title, post_desc, post_text FROM posts WHERE post_id= ${pid}`,
         (qerr, qres, qfields) => {
             if(qerr) {
                 console.log(qerr);
@@ -32,7 +33,8 @@ router.get("/view/:post_id", async (req, res, next) => {
             }
             console.log(qres);
             res.render('view', {
-                title: qres[0].post_title,
+                title: qres[0].post_title + " - Блогик",
+                page_desc: qres[0].post_desc,
                 post_title: qres[0].post_title,
                 post_text: qres[0].post_text
             });
@@ -42,7 +44,8 @@ router.get("/view/:post_id", async (req, res, next) => {
 
 router.get("/post", (req, res, next) => {
     res.render('post', {
-        title: "Опублікувати"
+        title: "Створити пост - Блогик",
+        page_desc: "Опублікувати власний мініблог."
     });
 });
 
